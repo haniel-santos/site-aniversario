@@ -8,82 +8,103 @@
     /* Reset e configurações básicas */
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #800020, #4b0010 80%);
       color: #fff;
       text-align: center;
       position: relative;
-      font-size: 16px; /* Tamanho base para mobile first */
       min-height: 100vh;
       overflow-x: hidden;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     /* Container principal */
     .container {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: 20px;
-      padding: 20px;
-      width: 90%;
+      padding: 25px 20px;
+      width: 95%;
       max-width: 600px;
-      margin: 20px auto;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      margin: 15px auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       z-index: 2;
     }
 
     /* Títulos */
     h1 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 12px rgba(255,255,255,0.8);
+      line-height: 1.2;
+    }
+
+    .subtitle {
       font-size: 1.8rem;
       margin-bottom: 15px;
-      text-shadow: 0 0 10px rgba(255,255,255,0.7);
-      line-height: 1.3;
+      color: #ffe6ee;
     }
 
     /* Parágrafos */
     p {
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       line-height: 1.5;
+      margin-bottom: 20px;
     }
 
     /* Imagens */
-    img {
-      max-width: 100%;
-      border-radius: 15px;
-      margin: 15px 0;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    .image-container {
       display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
     /* Botão */
     button {
-      margin-top: 20px;
-      padding: 15px 30px;
+      margin-top: 25px;
+      padding: 18px 35px;
       border: none;
-      border-radius: 25px;
-      background-color: #ff4d6d;
+      border-radius: 30px;
+      background: linear-gradient(to right, #ff4d6d, #ff8fa3);
       color: white;
-      font-size: 1.1rem;
+      font-size: 1.4rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
-      width: 100%;
-      max-width: 300px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     
-    button:hover {
-      background-color: #e63950;
+    button:hover, button:active {
+      background: linear-gradient(to right, #e63950, #ff708a);
       transform: scale(1.05);
+      box-shadow: 0 7px 18px rgba(0,0,0,0.25);
     }
 
     /* Surpresa */
     #surpresa {
       display: none;
-      font-size: 1.2rem;
-      margin-top: 20px;
+      font-size: 1.5rem;
+      margin-top: 25px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
       color: #ffe6f0;
       text-shadow: 0 0 10px rgba(255,255,255,0.5);
       line-height: 1.5;
@@ -93,38 +114,52 @@
     .heart {
       position: absolute;
       color: #ffdde1;
-      font-size: 20px;
+      font-size: 24px;
       animation: fall linear infinite;
       z-index: 1;
+      user-select: none;
+      pointer-events: none;
     }
 
     @keyframes fall {
-      from { transform: translateY(-10vh); opacity: 1; }
-      to { transform: translateY(110vh); opacity: 0; }
+      from { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
 
-    /* Media Queries para telas maiores */
-    @media (min-width: 768px) {
-      body {
-        font-size: 1.2em;
-      }
-      
-      .container {
-        padding: 40px;
-        margin: 40px auto;
-      }
-      
+    /* Media Queries para ajustes específicos */
+    @media (max-width: 480px) {
       h1 {
-        font-size: 2.5rem;
+        font-size: 2.1rem;
+      }
+      
+      .subtitle {
+        font-size: 1.6rem;
       }
       
       p {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
       }
       
       button {
-        width: auto;
-        padding: 12px 25px;
+        font-size: 1.3rem;
+        padding: 16px 30px;
+      }
+      
+      #surpresa {
+        font-size: 1.4rem;
+      }
+      
+      .container {
+        padding: 20px 15px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 1.9rem;
+      }
+      
+      .subtitle, p, button {
         font-size: 1.2rem;
       }
       
@@ -132,40 +167,51 @@
         font-size: 1.3rem;
       }
     }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 40px;
+      }
+      
+      .image-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>🎂 Feliz Aniversário, meu amor ❤️</h1>
+    <h1>🎂 Feliz Aniversário<br>meu amor ❤️</h1>
     <p>Hoje celebramos você, que é a minha maior alegria!</p>
+    
     <button onclick="mostrarMensagem()">Clique para uma surpresa 💌</button>
 
-    <img id="foto" src="foto.jpg" alt="Nós dois">
-    <img id="foto1" src="foto1.jpg" alt="Nós dois">
-    <img id="foto2" src="foto2.jpg" alt="Nós dois">
-    <img id="foto3" src="foto3.jpg" alt="Nós dois">
+    <div class="image-container" id="fotos">
+      <img src="foto.jpg" alt="Nós dois">
+      <img src="foto1.jpg" alt="Nós dois">
+      <img src="foto2.jpg" alt="Nós dois">
+      <img src="foto3.jpg" alt="Nós dois">
+    </div>
+    
     <p id="surpresa">Eu te amo infinitamente, e quero estar ao seu lado em todos os aniversários da sua vida! 💕</p>
   </div>
+  
   <audio id="musica" src="Iframe Turning Page [M-AMu_iAcf8].mp3" loop></audio>
 
   <script>
     function mostrarMensagem() {
-      document.getElementById("foto").style.display = "block";
-      document.getElementById("foto1").style.display = "block";
-      document.getElementById("foto2").style.display = "block";
-      document.getElementById("foto3").style.display = "block"; 
+      document.getElementById("fotos").style.display = "grid";
       document.getElementById("surpresa").style.display = "block";
 
       const musica = document.getElementById("musica");
-      if (musica.paused) {
-        // Adicionando tratamento para autoplay em mobile
-        const playPromise = musica.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(error => {
-            console.log("Reprodução automática impedida pelo navegador:", error);
-            // Podemos mostrar um botão para o usuário iniciar a música manualmente
-          });
-        }
+      // Tentar reproduzir a música com tratamento de erro
+      const playPromise = musica.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log("Reprodução automática impedida. O usuário precisa interagir primeiro.");
+          // Podemos mostrar um botão para o usuário iniciar a música manualmente
+        });
       }
     }
 
@@ -174,13 +220,23 @@
       heart.classList.add("heart");
       heart.innerHTML = "💖";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (Math.random() * 20 + 15) + "px"; // Tamanho reduzido para mobile
-      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      heart.style.fontSize = (Math.random() * 20 + 18) + "px";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
+      setTimeout(() => {
+        if (heart.parentNode) {
+          heart.parentNode.removeChild(heart);
+        }
+      }, 6000);
     }
 
-    setInterval(criarCoracao, 500);
+    // Criar corações a cada 400ms
+    setInterval(criarCoracao, 400);
+    
+    // Inicializar alguns corações imediatamente
+    for (let i = 0; i < 10; i++) {
+      setTimeout(criarCoracao, i * 100);
+    }
   </script>
 </body>
 </html>

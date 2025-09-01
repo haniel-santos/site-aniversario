@@ -7,13 +7,8 @@
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      background: linear-gradient(135deg, #800020, #4b0010 80%);
       color: #fff;
       text-align: center;
       position: relative;
@@ -24,7 +19,8 @@
       backdrop-filter: blur(10px);
       border-radius: 20px;
       padding: 30px;
-      max-width: 500px;
+      max-width: 400px; /* diminua o max-width para menos zoom */
+      margin: 40px auto; /* centralize horizontalmente e dê espaço em cima/baixo */
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       z-index: 2;
     }
@@ -91,14 +87,20 @@
     <button onclick="mostrarMensagem()">Clique para uma surpresa 💌</button>
 
     <img id="foto" src="foto.jpg" alt="Nós dois">
+    <img id="foto1" src="foto1.jpg" alt="Nós dois">
+    <img id="foto2" src="foto2.jpg" alt="Nós dois">
+    <img id="foto3" src="foto3.jpg" alt="Nós dois">
     <p id="surpresa">Eu te amo infinitamente, e quero estar ao seu lado em todos os aniversários da sua vida! 💕</p>
   </div>
-  <audio id="musica" src="Iframe Turning Page [M-AMu_iAcf8].mp3"></audio>
+  <audio id="musica" src="Iframe Turning Page [M-AMu_iAcf8].mp3" loop></audio>
 
 
   <script>
-  function mostrarMensagem() {  
+  function mostrarMensagem() {
   document.getElementById("foto").style.display = "block";
+  document.getElementById("foto1").style.display = "block";
+  document.getElementById("foto2").style.display = "block";
+  document.getElementById("foto3").style.display = "block"; 
   document.getElementById("surpresa").style.display = "block";
 
   const musica = document.getElementById("musica");

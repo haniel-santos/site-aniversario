@@ -93,8 +93,19 @@
     <img id="foto" src="foto.jpg" alt="Nós dois">
     <p id="surpresa">Eu te amo infinitamente, e quero estar ao seu lado em todos os aniversários da sua vida! 💕</p>
   </div>
+  <audio id="musica" src="Iframe Turning Page [M-AMu_iAcf8].mp3"></audio>
+
 
   <script>
+  function mostrarMensagem() {  
+  document.getElementById("foto").style.display = "block";
+  document.getElementById("surpresa").style.display = "block";
+
+  const musica = document.getElementById("musica");
+  if (musica.paused) {
+    musica.play();
+  }
+}
     let musicaTocando = false;
 
     function mostrarMensagem() {

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Parabéns, meu amor ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.7);
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      display: none;
+    }
+
+    p {
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background-color: #ff4d6d;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+    button:hover {
+      background-color: #e63950;
+      transform: scale(1.05);
+    }
+
+    #surpresa {
+      display: none;
+      font-size: 1.3em;
+      margin-top: 20px;
+      color: #ffe6f0;
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+
+    .heart {
+      position: absolute;
+      color: #ffdde1;
+      font-size: 20px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-10vh); opacity: 1; }
+      to { transform: translateY(110vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎂 Feliz Aniversário, meu amor ❤️</h1>
+    <p>Hoje celebramos você, que é a minha maior alegria!</p>
+    <button onclick="mostrarMensagem()">Clique para uma surpresa 💌</button>
+
+    <img id="foto" src="foto.jpg" alt="Nós dois">
+    <p id="surpresa">Eu te amo infinitamente, e quero estar ao seu lado em todos os aniversários da sua vida! 💕</p>
+  </div>
+
+  <script>
+    let musicaTocando = false;
+
+    function mostrarMensagem() {
+      document.getElementById("foto").style.display = "block";
+      document.getElementById("surpresa").style.display = "block";
+
+      // Inicia música apenas uma vez
+      if (!musicaTocando) {
+        const iframe = document.createElement("iframe");
+        iframe.width = "0";
+        iframe.height = "0";
+        iframe.src = "https://www.youtube.com/embed/-kYBqVvgwqQ?autoplay=1&loop=1&playlist=-kYBqVvgwqQ";
+        iframe.frameBorder = "0";
+        iframe.allow = "autoplay; encrypted-media";
+        document.body.appendChild(iframe);
+        musicaTocando = true;
+      }
+    }
+
+    function criarCoracao() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(criarCoracao, 500);
+  </script>
+</body>
+</html>

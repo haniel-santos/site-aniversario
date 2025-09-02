@@ -65,7 +65,7 @@
     /* Imagens */
     .image-container {
       display: none;
-      grid-template-columns: 1fr 1fr;
+      flex-direction: column;
       gap: 15px;
       margin: 20px 0;
     }
@@ -181,7 +181,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>🎂 Feliz Aniversário<br>meu amor ❤️</h1>
+    <h1>Feliz Aniversário<br>meu amor<br>❤️</h1>
     <p>Hoje celebramos você, que é a minha maior alegria!</p>
     
     <button onclick="mostrarMensagem()">Clique para uma surpresa 💌</button>
@@ -200,20 +200,20 @@
 
   <script>
     function mostrarMensagem() {
-      document.getElementById("fotos").style.display = "grid";
-      document.getElementById("surpresa").style.display = "block";
+  const fotos = document.getElementById("fotos");
+  fotos.style.display = "flex"; // ativa o flex em coluna
+  document.getElementById("surpresa").style.display = "block";
+  
+  const musica = document.getElementById("musica");
+  const playPromise = musica.play();
+  
+  if (playPromise !== undefined) {
+    playPromise.catch(error => {
+      console.log("Reprodução automática impedida. O usuário precisa interagir primeiro.");
+    });
+  }
+}
 
-      const musica = document.getElementById("musica");
-      // Tentar reproduzir a música com tratamento de erro
-      const playPromise = musica.play();
-      
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log("Reprodução automática impedida. O usuário precisa interagir primeiro.");
-          // Podemos mostrar um botão para o usuário iniciar a música manualmente
-        });
-      }
-    }
 
     function criarCoracao() {
       const heart = document.createElement("div");
